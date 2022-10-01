@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class TimerScript : MonoBehaviour
+public class Countdown : MonoBehaviour
 {
     //public GameOverScreen GameOverScreen;
     //public ScoreManager ScoreManager;
