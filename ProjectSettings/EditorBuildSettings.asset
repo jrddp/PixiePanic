@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level Designing.unity
     guid: 2ed6cb12a7611de45abe81cccc5fbfd8
+  - enabled: 1
+    path: Assets/Scenes/TheFairyWins.unity
+    guid: 1e401e1aaba87dc4db1686b976e324e6
   m_configObjects: {}

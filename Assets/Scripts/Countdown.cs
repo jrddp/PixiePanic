@@ -27,6 +27,18 @@ public class Countdown : MonoBehaviour
 
         }
         countdownDisplay.text = "STOP";
+
+        int currentScoreCarnegie = GameObject.FindGameObjectsWithTag("tile_red").Length;
+        int currentScoreFairy = GameObject.FindGameObjectsWithTag("tile_green").Length;
+
+        if (currentScoreCarnegie > currentScoreFairy) {
+          SceneManager.LoadScene(4);
+        } else if (currentScoreFairy > currentScoreCarnegie) {
+          SceneManager.LoadScene(3);
+        } else {
+          // display tie ???
+        }
+
     }
 
 
