@@ -32,7 +32,7 @@ public class Countdown : MonoBehaviour
         int currentScoreFairy = GameObject.FindGameObjectsWithTag("tile_green").Length;
 
         if (currentScoreCarnegie > currentScoreFairy) {
-          //SceneManager.LoadScene(2);
+          SceneManager.LoadScene(4);
         } else if (currentScoreFairy > currentScoreCarnegie) {
           SceneManager.LoadScene(3);
         } else {
