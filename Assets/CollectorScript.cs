@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class collector : MonoBehaviour
+public class CollectorScript : MonoBehaviour
 {
     public int green = 0;
     public int red = 0;
@@ -20,25 +20,7 @@ public class collector : MonoBehaviour
         Debug.Log(red);
     }
 
-    void redUp()
-    {
-        red++;
-    }
 
-    void redDown()
-    {
-        red--;
-    }
-
-    void greenUp()
-    {
-        green++;
-    }
-
-    void greenDown()
-    {
-        green--;
-    }
 
 
 }
