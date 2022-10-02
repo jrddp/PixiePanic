@@ -14,6 +14,7 @@ public class BlockSpriteChange : MonoBehaviour
     public int player1_score;
     public int player2_score;
 
+
     // Use this for initialization
     void Start()
     {
