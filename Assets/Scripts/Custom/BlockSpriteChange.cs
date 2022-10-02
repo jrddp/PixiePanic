@@ -11,6 +11,9 @@ public class BlockSpriteChange : MonoBehaviour
     private Renderer rend;
     private SpriteRenderer spriteRenderer;
 
+    public int player1_score;
+    public int player2_score;
+
     // Use this for initialization
     void Start()
     {
@@ -20,15 +23,24 @@ public class BlockSpriteChange : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Player1")
+        if (collision.gameObject.name == "Player1" && gameObject.tag != "tile_green")
         {
-            spriteRenderer.sprite = spriteForest;
-        }
-        else if (collision.gameObject.name == "Player2")
-        {
-            spriteRenderer.sprite = spriteBusiness;
-        }
+            if (gameObject.tag == "tile_red")
+                player2_score--;
 
+            player1_score++; 
+            spriteRenderer.sprite = spriteForest;
+            gameObject.tag = "tile_green";
+        }
+        else if (collision.gameObject.name == "Player2" && gameObject.tag != "tile_red")
+        {
+            if (gameObject.tag == "tile_green")
+                player1_score--;
+
+            player2_score++;
+            spriteRenderer.sprite = spriteBusiness;
+            gameObject.tag = "tile_red";
+        }
     }
 
 }
