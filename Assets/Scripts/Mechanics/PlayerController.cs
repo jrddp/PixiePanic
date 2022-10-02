@@ -23,6 +23,9 @@ namespace Platformer.Mechanics
         public AudioClip respawnAudio;
         public AudioClip ouchAudio;
 
+        public float abilityDelay = 3f;
+        private float lastAbility = 0;
+
         /// <summary>
         /// Max horizontal speed of the player.
         /// </summary>
@@ -72,7 +75,8 @@ namespace Platformer.Mechanics
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
                 }
-                if (Input.GetButtonDown(abilityStr) && IsGrounded) {
+                if (Input.GetButtonDown(abilityStr) && IsGrounded && Time.time - lastAbility >= abilityDelay) {
+                    lastAbility = Time.time;
                     int dir = 1;
                     if (spriteRenderer.flipX) dir = -1;
                     Vector3 newPos = transform.position + new Vector3(dir * .5f, 0, 0);
