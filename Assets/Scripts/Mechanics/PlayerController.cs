@@ -17,6 +17,7 @@ namespace Platformer.Mechanics
         // Controls movement controls
         public int controlScheme = 1;
 
+        public GameObject abilitySpawn;
 
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;
@@ -61,6 +62,7 @@ namespace Platformer.Mechanics
             {
                 string xaxisStr = "P" + controlScheme + "Horizontal";
                 string jumpStr = "P" + controlScheme + "Jump";
+                string abilityStr = "P" + controlScheme + "Ability";
 
                 move.x = Input.GetAxis(xaxisStr);
                 if (jumpState == JumpState.Grounded && Input.GetButtonDown(jumpStr))
@@ -70,6 +72,12 @@ namespace Platformer.Mechanics
                     stopJump = true;
                     Schedule<PlayerStopJump>().player = this;
                 }
+                if (Input.GetButtonDown(abilityStr) && IsGrounded) {
+                    int dir = 1;
+                    if (spriteRenderer.flipX) dir = -1;
+                    Vector3 newPos = transform.position + new Vector3(dir * .5f, 0, 0);
+                    Instantiate(abilitySpawn, newPos, transform.rotation);
+                }
             }
             else
             {
@@ -78,6 +86,18 @@ namespace Platformer.Mechanics
             UpdateJumpState();
             base.Update();
         }
+
+
+        // void OnCollisionEnter2D(Collision2D collision)
+        // {
+        //     if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
+        //     {
+        //         Debug.Log(this.gameObject.name + " collided by: " + collision.gameObject.name);
+        //         targetVelocity.x = -1 * maxSpeed;
+        //         ComputeVelocity();
+        //     }
+
+        // }
 
         void UpdateJumpState()
         {
